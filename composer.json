@@ -30,13 +30,30 @@
         "spatie/packagist-api": "^1.0.1",
         "spatie/valuestore": "^1.1"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "git@github.com:VANINUitgeverij/PHP-Parallel-Lint.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "git@github.com:VANINUitgeverij/PHP_CodeSniffer.git"
+        }
+    ],
     "require-dev": {
         "filp/whoops": "~2.0",
-        "friendsofphp/php-cs-fixer": "^2.10",
+        "friendsofphp/php-cs-fixer": "^2.12",
         "fzaninotto/faker": "~1.4",
+        "jakub-onderka/php-parallel-lint": "^1.0",
         "mockery/mockery": "~1.0",
+        "nunomaduro/collision": "~2.0",
+        "phpmd/phpmd": "^2.6",
+        "phpro/grumphp": "^0.14.1",
         "phpunit/phpunit": "~7.0",
-        "nunomaduro/collision": "~2.0"
+        "roave/security-advisories": "dev-master",
+        "sebastian/phpcpd": "^4.0",
+        "sensiolabs/security-checker": "^4.1",
+        "squizlabs/php_codesniffer": "^3.3"
     },
     "autoload": {
         "classmap": [
@@ -67,6 +84,12 @@
             "php artisan key:generate"
         ],
         "laravel-echo-server": "laravel-echo-server start",
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
@@ -79,6 +102,9 @@
     "extra": {
         "laravel": {
             "dont-discover": []
+        },
+        "grumphp": {
+            "config-default-path": "grump-config/grumphp.yml"
         }
     }
 }
