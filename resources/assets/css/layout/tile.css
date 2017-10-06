@@ -35,11 +35,11 @@
 }
 
 .tile--orange {
-    --tile-background-color: var(--orange);
+    --tile-background-color: var(--orange-darker);
 }
 
 .tile--red {
-    --tile-background-color: var(--red);
+    --tile-background-color: var(--red-darker);
 }
 
 .tile--transparent {
