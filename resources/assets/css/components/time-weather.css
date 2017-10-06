@@ -3,7 +3,7 @@
     grid-gap: .25em;
     justify-items: center;
     grid-template-rows: 1fr auto 1fr;
-    grid-template-areas: 
+    grid-template-areas:
             "empty"
             "content"
             "timezone";
@@ -26,12 +26,14 @@
 }
 
 .time-weather__date {
+    display: block;
     color: var(--gray-light);
     text-transform: uppercase;
     font-size: var(--font-size-xs);
 }
 
 .time-weather__weather {
+    display: block;
     color: var(--gray-light);
     font-size: var(--font-size-m);
 }
