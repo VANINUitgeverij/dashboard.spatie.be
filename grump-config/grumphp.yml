@@ -1,0 +1,64 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    tasks:
+      composer: ~
+      git_commit_message:
+        enforce_capitalized_subject: false
+        max_subject_width: 72
+        matchers:
+          - /^(bugfix|feature|refactor|cleanup|typo|other|test|doc|release|sync|staging) - /
+      jsonlint:
+        ignore_patterns: ['storage/app/seeds/', 'resources/stubs/']
+        detect_key_conflicts: true
+      phpcpd:
+        exclude:
+          - _ide_helper.php
+          - database/migrations
+          - vendor
+          - config
+          - storage/framework/views
+        min_lines: 5
+        min_tokens: 70
+        triggered_by: ['php']
+      phpcs:
+        standard: 'grump-config/phpcs.xml'
+        ignore_patterns:
+          - _ide_helper.php
+          - vendor
+          - bootstrap/autoload.php
+          - database/migrations
+          - database/seeds
+          - resources/views
+          - Envoy.blade.php
+          - tests
+      phpcsfixer2:
+        allow_risky: true
+        config: 'grump-config/.php_cs'
+        verbose: true
+      phplint:
+        exclude:
+          - _ide_helper.php
+          - vendor
+      phpmd:
+        exclude:
+          - _ide_helper.php
+          - vendor
+          - database/migrations
+          - tests
+        ruleset: ['grump-config/ruleset.xml']
+      phpparser:
+        ignore_patterns:
+          - _ide_helper.php
+          - vendor
+        triggered_by: ['php']
+        visitors:
+          forbidden_function_calls:
+            blacklist:
+              - 'var_dump'
+              - 'dd'
+              - 'die'
+          no_exit_statements: ~
+      securitychecker: ~
+      xmllint: ~
+      yamllint: ~

@@ -1,0 +1,53 @@
+version: 2
+jobs:
+  build:
+    working_directory: /home/default/dashboard
+    docker:
+      - image: vanin/sol2-docker:1.0.7
+    steps:
+      - checkout
+      - run:
+          name: Checkout merged code
+          command: |
+            if [[ ! -z "$CIRCLE_PULL_REQUEST" ]]; then
+              if [[ -z ${CIRCLE_PR_NUMBER} ]]; then
+                CIRCLE_PR_NUMBER=$(echo ${CIRCLE_PULL_REQUEST}|sed 's/.*pull\/\(.*\)/\1/g')
+              fi
+              git fetch origin "+refs/pull/${CIRCLE_PR_NUMBER}/merge:refs/gh-merge/remotes/origin/${CIRCLE_PR_NUMBER}"
+              git fetch origin "pull/${CIRCLE_PR_NUMBER}/merge:merge_${CIRCLE_PR_NUMBER}"
+              git checkout --force merge_${CIRCLE_PR_NUMBER}
+            fi
+      - restore_cache:
+          key: v1-dashboard-{{ checksum "composer.lock" }}
+      - run:
+          name: Install Dependencies
+          command: composer install
+      - save_cache:
+          key: v1-dashboard-{{ checksum "composer.lock" }}
+          paths:
+            - vendor
+      - run:
+          name: Check commit messages in pull request
+          command: |
+            if [[ ! -z "$CIRCLE_PULL_REQUEST" ]]; then
+              git log --left-only --cherry-pick --pretty=format:'"%s"' ...origin/HEAD|tail -n +2|xargs bash .circleci/check-commit-msg.sh
+            fi
+      - run:
+          name: GrumPHP
+          command: |
+               grumphp run
+      - restore_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          key: v1-prd-composer-{{ checksum "composer.lock" }}
+      - save_cache:
+          key: v1-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - save_cache:
+          key: v1-prd-composer-{{ checksum "composer.lock" }}
+          paths:
+            - vendor
+      - store_artifacts:
+          path: storage/logs/laravel.log
+          destination: laravel_logs.txt
