@@ -1,5 +1,5 @@
 <template>
-    <div :class="tileLook" :style="tilePosition">
+    <div :class="[tileLook, alert]" :style="tilePosition">
         <slot></slot>
     </div>
 </template>
@@ -9,7 +9,7 @@
 
     export default {
 
-        props: ['position', 'modifiers'],
+        props: ['position', 'modifiers', 'alert'],
 
         computed: {
             tilePosition() {

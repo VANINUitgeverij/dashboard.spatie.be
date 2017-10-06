@@ -1,5 +1,5 @@
 <template>
-    <tile :position="position" modifiers="overflow">
+    <tile :position="position" modifiers="overflow" :alert="alert">
         <section class="statistics">
             <h1>GitHub: {{ project }}</h1>
             <ul>
@@ -39,6 +39,19 @@
             return {
                 pullRequests: 0,
             };
+        },
+
+        computed: {
+            alert: function () {
+                switch (true) {
+                    case this.pullRequests.count > 7:
+                        return 'tile--red';
+                    case this.pullRequests.count > 4:
+                        return 'tile--orange';
+                    default:
+                        return '';
+                }
+            },
         },
 
         methods: {
