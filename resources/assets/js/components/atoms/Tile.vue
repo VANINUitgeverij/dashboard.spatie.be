@@ -1,5 +1,5 @@
 <template>
-    <div :class="tileLook" :style="tilePosition">
+    <div :class="[tileLook, alert]" :style="tilePosition">
         <slot></slot>
     </div>
 </template>
@@ -8,7 +8,8 @@
 import { addClassModifiers, positionToGridAreaNotation } from '../../helpers';
 
 export default {
-    props: ['position', 'modifiers'],
+
+        props: ['position', 'modifiers', 'alert'],
 
     computed: {
         tilePosition() {
