@@ -1,0 +1,31 @@
+.count-down {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.count-down__group {
+    display: flex;
+    padding: .1em 0;
+    color: var(--yellow);
+    letter-spacing: .05em;
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-l);
+    text-align: center;
+    line-height: 1;
+    margin: 0 .5em
+}
+
+.count-down__block {
+    margin: 0 .5em;
+}
+
+.count-down__value {
+    font-size: var(--font-size-xl);
+}
+
+.count-down__name {
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    text-align: center;
+}
