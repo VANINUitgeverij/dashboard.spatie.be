@@ -8,40 +8,31 @@
 </template>
 
 <script>
-    import echo from '../mixins/echo';
     import { addClassModifiers } from '../helpers';
     import moment from 'moment';
 
     export default {
-
-        mixins: [echo],
-
         data() {
             return {
                 offline: false,
-                lastHeartBeatReceivedAt: moment(),
             };
         },
 
         created() {
-            setInterval(this.determineConnectionStatus, 1000);
+            window.addEventListener('online', this.updateStatus);
+            window.addEventListener('offline', this.updateStatus);
+            this.updateStatus();
         },
 
         methods: {
             addClassModifiers,
 
-            determineConnectionStatus() {
-                const lastHeartBeatReceivedSecondsAgo = moment().diff(this.lastHeartBeatReceivedAt, 'seconds');
-
-                this.offline = lastHeartBeatReceivedSecondsAgo > 125;
-            },
-
-            getEventHandlers() {
-                return {
-                    'InternetConnection.Heartbeat': () => {
-                        this.lastHeartBeatReceivedAt = moment();
-                    },
-                };
+            updateStatus: function () {
+                if (typeof window.navigator.onLine === 'undefined') {
+                    this.offline = false;
+                } else {
+                    this.offline = !window.navigator.onLine;
+                }
             },
         },
     };

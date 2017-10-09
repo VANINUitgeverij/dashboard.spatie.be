@@ -13,6 +13,5 @@ class UpdateDashboard extends Command
     public function handle()
     {
         $this->call('dashboard:fetch-github-total-details');
-        $this->call('dashboard:send-heartbeat');
     }
 }
