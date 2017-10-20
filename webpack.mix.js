@@ -5,7 +5,7 @@ mix
     .postCss('resources/assets/css/app.css', 'public/css')
 
     .version()
-
+    .copy('resources/assets/audio/horn.mp3', 'public/audio/horn.mp3')
     .options({
         processCssUrls: false,
 
