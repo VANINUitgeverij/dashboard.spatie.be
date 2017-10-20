@@ -15,14 +15,15 @@
 
         <overlay v-else :show="showOverlay">
             <div class="count-down__content">
-                    <div class="count-down__name">{{ name }} {{ timer ? 'finished' : ''}} in </div>
-                    <div class="count-down__group">
-                        <div v-for="(value, key) in countDown" class="count-down__block">
-                            <div class="count-down__value">{{ value }}</div>
-                            <div class="count-down__name">{{ key }}{{ value == 1 ? '' : 's'}}</div>
-                        </div>
+                <div class="count-down__name">{{ name }} {{ timer ? 'finished' : ''}} in </div>
+                <div class="count-down__group">
+                    <div v-for="(value, key) in countDown" class="count-down__block">
+                        <div class="count-down__value">{{ value }}</div>
+                        <div class="count-down__name">{{ key }}{{ value == 1 ? '' : 's'}}</div>
                     </div>
                 </div>
+            </div>
+            <audio ref="horn" src="/audio/horn.mp3"></audio>
         </overlay>
 </template>
 
@@ -72,6 +73,7 @@
                 var counter = this.getCounter();
 
                 if (Object.keys(counter).length == 0) {
+                    this.playHorn();
                     if(this.timerMinutes > 0) {
                         if (this.timer) {
                             this.init();
@@ -138,6 +140,10 @@
                 }
 
                 return counter;
+            }, 
+
+            playHorn() {
+                this.$refs.horn.play();
             }
         },
     };
