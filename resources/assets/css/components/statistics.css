@@ -15,7 +15,7 @@
 }
 
 .statistic__count {
-    color: var(--yellow);
+    color: var(--orange);
     vertical-align: top;
     white-space: nowrap;
     font-weight: var(--font-weight-black);

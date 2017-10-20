@@ -7,7 +7,7 @@
 .count-down__group {
     display: flex;
     padding: .1em 0;
-    color: var(--yellow);
+    color: var(--orange);
     letter-spacing: .05em;
     font-weight: var(--font-weight-light);
     font-size: var(--font-size-l);

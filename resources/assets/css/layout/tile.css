@@ -3,7 +3,7 @@
     padding: var(--grid-padding);
     border-radius: .25vw;
     background-color: var(--tile-background-color);
-    color: white;
+    color: var(--tile-title-color);
     text-shadow: 1px 1px 1px var(--tile-background-color);
 
     h1 {
@@ -49,7 +49,7 @@
 }
 
 .tile--yellow {
-    --tile-background-color: var(--yellow);
+    --tile-background-color: var(--orange);
 
     color: black;
 
