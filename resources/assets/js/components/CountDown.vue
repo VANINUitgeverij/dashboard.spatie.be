@@ -1,5 +1,4 @@
 <template>
-    <div>
         <tile v-if='position' :position="position">
             <section class="count-down">
                 <div class="count-down__content">
@@ -14,7 +13,7 @@
             </section>
         </tile>
 
-        <overlay :show="showOverlay">
+        <overlay v-else :show="showOverlay">
             <div class="count-down__content">
                     <div class="count-down__name">{{ name }} {{ timer ? 'finished' : ''}} in </div>
                     <div class="count-down__group">
@@ -25,7 +24,6 @@
                     </div>
                 </div>
         </overlay>
-    </div>
 </template>
 
 <script>
