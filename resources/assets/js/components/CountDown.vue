@@ -69,22 +69,7 @@
 
         computed: {
             countDown: function () {
-                var duration = this.getDuration();
-                var counter = {
-                    day: duration.days(),
-                    hour: duration.hours(),
-                    minute: duration.minutes(),
-                    second: duration.seconds(),
-                };
-
-                for (var key in counter) {
-                    if (counter[key] == 0) {
-                        delete counter[key];
-                        continue;
-                    }
-
-                    break;
-                }
+                var counter = this.getCounter();
 
                 if (Object.keys(counter).length == 0) {
                     if(this.timerMinutes > 0) {
@@ -92,6 +77,7 @@
                             this.init();
                         } else {
                             this.next = moment().add(this.timerMinutes, 'm');
+                            counter = this.getCounter();
                         }
                         this.timer = !this.timer;
                     }
@@ -131,6 +117,27 @@
 
             getDuration() {
                 return moment.duration(this.next - this.time)
+            },
+
+            getCounter() {
+                var duration = this.getDuration();
+                var counter = {
+                    day: duration.days(),
+                    hour: duration.hours(),
+                    minute: duration.minutes(),
+                    second: duration.seconds(),
+                };
+
+                for (var key in counter) {
+                    if (counter[key] == 0) {
+                        delete counter[key];
+                        continue;
+                    }
+
+                    break;
+                }
+
+                return counter;
             }
         },
     };
