@@ -23,7 +23,7 @@
 }
 
 .internet-connection__icon {
-    background-image: url('/images/svg/alert.svg');
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIxNiAtMTYgNjQgNjQiPjxzdHlsZT4uc3Qwe2ZpbGw6bm9uZTtzdHJva2U6I2ZmZjtzdHJva2UtbWl0ZXJsaW1pdDoxMH08L3N0eWxlPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00OCA0MkgxNy41bDE1LjQtMjUuOUw0OC0xMGwxNS4xIDI1LjlMNzguNSA0MnptMC0zMi43djE2LjNtMCAzLjJ2Mi45Ii8+PC9zdmc+);
     font-size: var(--font-size-l);
 }
 

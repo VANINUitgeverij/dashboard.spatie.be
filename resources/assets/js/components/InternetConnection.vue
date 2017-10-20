@@ -24,11 +24,26 @@
         },
 
         created() {
-            setInterval(this.determineConnectionStatus, 1000);
+            // if the browser supports navigator.online, we use that feature instead of using the interval.
+
+            if (window.navigator.onLine) {
+                window.addEventListener('online', this.updateStatus);
+                window.addEventListener('offline', this.updateStatus);
+            } else {
+                setInterval(this.determineConnectionStatus, 1000);
+            }
         },
 
         methods: {
             addClassModifiers,
+
+            updateStatus: function () {
+                if (typeof window.navigator.onLine === 'undefined') {
+                    this.offline = false;
+                } else {
+                    this.offline = !window.navigator.onLine;
+                }
+            },
 
             determineConnectionStatus() {
                 const lastHeartBeatReceivedSecondsAgo = moment().diff(this.lastHeartBeatReceivedAt, 'seconds');
