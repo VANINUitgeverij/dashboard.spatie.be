@@ -28,4 +28,9 @@
     font-size: var(--font-size-xs);
     text-transform: uppercase;
     text-align: center;
+    margin-bottom: 1vw
+}
+
+.overlay__container .count-down__group {
+    color: var(--color);
 }
