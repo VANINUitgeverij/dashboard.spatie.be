@@ -5,6 +5,7 @@ import Vue from 'vue';
 
 import Dashboard from './components/Dashboard';
 import Calendar from './components/Calendar';
+import CountDown from './components/CountDown.vue';
 import Github from './components/Github';
 import GithubProject from './components/GithubProject';
 import InternetConnection from './components/InternetConnection';
@@ -13,7 +14,6 @@ import Npm from './components/Npm';
 import Packagist from './components/Packagist';
 import Tasks from './components/Tasks';
 import TimeWeather from './components/TimeWeather';
-import CountDown from './components/CountDown.vue';
 import Twitter from './components/Twitter';
 import Uptime from './components/Uptime';
 
@@ -23,6 +23,7 @@ new Vue({
     components: {
         Dashboard,
         Calendar,
+        CountDown,
         Github,
         GithubProject,
         InternetConnection,
@@ -31,7 +32,6 @@ new Vue({
         Packagist,
         Tasks,
         TimeWeather,
-        CountDown,
         Twitter,
         Uptime,
     },
