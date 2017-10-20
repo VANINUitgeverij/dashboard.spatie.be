@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "chai": "^3.5.0",
+    "cron-parser": "^2.4.3",
     "cross-env": "^5.0.1",
     "laravel-echo": "^1.3.4",
     "laravel-mix": "^2.0.0",
