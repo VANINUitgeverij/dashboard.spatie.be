@@ -9,7 +9,7 @@
     --orange-lightest: #ffe5ca;
     --orange-lighter: #f5b180;
     --orange-light: #e77636;
-    --orange: #e14a0c;
+    --orange: #fd9800;
     --orange-dark: #711f03;
     --orange-darker: #581902;
     --orange-darkest: #391102;
@@ -42,6 +42,8 @@
     --gray-darker: #23272f;
     --gray-darkest: #1a1e25;
     --color: #fff;
-    --dashboard-background-color: var(--gray-darkest);
-    --tile-background-color: var(--gray-darker);
+    --dashboard-background-color: #e3e7e8;
+    --tile-background-color: #fcfcfc;
+    --tile-title-color: #626262;
+    --tile-text-color: #9b9b9b;
 }
