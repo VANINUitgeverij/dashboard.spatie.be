@@ -10,6 +10,8 @@ mix
         processCssUrls: false,
     })
 
+    .copy('resources/assets/audio/horn.mp3', 'public/audio/horn.mp3')
+
     .webpackConfig({
         module: {
             rules: [
