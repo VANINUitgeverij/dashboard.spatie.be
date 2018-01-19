@@ -1,5 +1,5 @@
 <template>
-    <tile :position="position" modifiers="overflow" :alert="alert">
+    <tile :position="position" modifiers="overflow">
         <section class="statistics">
             <h1>GitHub: {{ project }}</h1>
             <ul>
@@ -41,27 +41,14 @@
             };
         },
 
-        computed: {
-            alert: function () {
-                switch (true) {
-                    case this.pullRequests.count > 7:
-                        return 'tile--red';
-                    case this.pullRequests.count > 4:
-                        return 'tile--orange';
-                    default:
-                        return '';
-                }
-            },
-        },
-
         methods: {
             formatNumber,
 
             getEventHandlers() {
                 return {
-                    'GitHub.TotalsDetailFetched': response => {
+                    'GitHub.TotalsDetailFetched': (response => {
                         this.pullRequests = response.totalDetails[this.project].pullRequests;
-                    },
+                    }).bind(this),
                 };
             },
 
