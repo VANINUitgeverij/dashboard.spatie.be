@@ -30,6 +30,8 @@ Install this package by running cloning this repository and install like you nor
 - Run `php artisan migrate --seed`, this will seed a user based on your `BASIC_AUTH` `.env` values
 - Start your queue listener and setup the Laravel scheduler.
 - Open the dashboard in your browser, login and wait for the update events to fill the dashboard.
+- Add dashboard to valet: `valet link dashboard`
+- You should now be able to navigate to [dashboard.test](http://dashboard.test)
 
 ## Postcardware
 
