@@ -11,7 +11,6 @@
 
 <script>
     import { addClassModifiers } from '../helpers';
-    import moment from 'moment';
 
     export default {
         data() {
